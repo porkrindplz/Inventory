@@ -20,10 +20,13 @@ namespace InventoryExample.Control
                 UpdateTarget();
                 updateTimer = 0;
             }
-            if (Input.GetKeyDown(KeyCode.P) && targetPickup.GetComponent<Pickup>().CanBePickedUp())
+            if (targetPickup != null)
             {
-                targetPickup.gameObject.GetComponent<Pickup>().PickupItem();
-                pickupsInRange.Remove(targetPickup);
+                if (Input.GetKeyDown(KeyCode.P) && targetPickup.GetComponent<Pickup>().CanBePickedUp())
+                {
+                    targetPickup.gameObject.GetComponent<Pickup>().PickupItem();
+                    pickupsInRange.Remove(targetPickup);
+                }
             }
             updateTimer += Time.deltaTime;
         }
